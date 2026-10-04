@@ -7,10 +7,8 @@
 
 :- discontiguous es_mob/1, categoria/2, vida/2, dimension/2.
 
-% ---------------------------------------------------------------------
 % mob(Nombre, Categoria, Vida)  -> categoria: pasivo | neutral | hostil | jefe
-% Se declara todo en un solo hecho para que agregar un mob sea 1 linea.
-% ---------------------------------------------------------------------
+
 % --- Pasivos ---
 mob(vaca,               pasivo,  10).
 mob(mooshroom,          pasivo,  10).
@@ -81,9 +79,9 @@ es_mob(X)       :- mob(X, _, _).
 categoria(X, C) :- mob(X, C, _).
 vida(X, V)      :- mob(X, _, V).
 
-% ---------------------------------------------------------------------
+
 % dimension(Mob, Dimension) -> overworld | nether | end
-% ---------------------------------------------------------------------
+
 dimension(X, overworld) :-
     es_mob(X),
     \+ solo_otra_dimension(X).
@@ -104,9 +102,9 @@ dimension(enderman,           end).
 dimension(shulker,            end).
 dimension(dragon_ender,       end).
 
-% ---------------------------------------------------------------------
+
 % alimenta_con(Mob, Alimento) -> alimento usado para criar / reproducir
-% ---------------------------------------------------------------------
+
 alimenta_con(vaca,      trigo).
 alimenta_con(mooshroom, trigo).
 alimenta_con(oveja,     trigo).
@@ -138,9 +136,9 @@ alimenta_con(camello,   cactus).
 alimenta_con(sniffer,   semilla_de_flor_antorcha).
 alimenta_con(hoglin,    hongo_carmesi).
 
-% ---------------------------------------------------------------------
+
 % produce(Mob, Item) -> lo que suelta al morir o se obtiene de el
-% ---------------------------------------------------------------------
+
 produce(vaca, cuero).                produce(vaca, carne_vacuna).
 produce(vaca, leche).
 produce(mooshroom, cuero).           produce(mooshroom, carne_vacuna).
@@ -208,9 +206,9 @@ es_comestible(salmon_crudo).    es_comestible(carne_podrida).
 es_comestible(estofado_de_champinones). es_comestible(leche).
 es_comestible(miel).            es_comestible(pescado_crudo).
 
-% ---------------------------------------------------------------------
+
 % Caracteristicas / comportamientos
-% ---------------------------------------------------------------------
+
 es_domesticable(lobo).   es_domesticable(gato).   es_domesticable(caballo).
 es_domesticable(burro).  es_domesticable(llama).  es_domesticable(loro).
 
