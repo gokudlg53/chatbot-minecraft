@@ -6,9 +6,7 @@
 :- ensure_loaded(base_conocimiento).
 :- ensure_loaded(reglas).
 
-% =====================================================================
 % 1. PROCESAMIENTO DE TEXTO
-% =====================================================================
 
 % normalizar(+Texto, -Palabras): minusculas, sin tildes, sin signos,
 % sin palabras vacias. "¿Qué come el Golem de Hierro?" -> [que,come,golem,hierro]
@@ -83,9 +81,9 @@ palabra_igual(P, P) :- !.
 palabra_igual(P, W) :- atom_concat(P, s, W), !.
 palabra_igual(P, W) :- atom_concat(P, es, W).
 
-% =====================================================================
+
 % 2. UTILIDADES DE SALIDA
-% =====================================================================
+
 txt(Atomo, Texto) :-
     atomic_list_concat(Ps, '_', Atomo),
     atomic_list_concat(Ps, ' ', Texto).
@@ -121,9 +119,9 @@ leer_item(Item) :-
     ;   resp("No conozco el item \"~w\".", [L]), fail
     ).
 
-% =====================================================================
+
 % 3. RESPUESTAS (cada una usa hechos + reglas)
-% =====================================================================
+
 r_alimento(M) :-
     findall(A, alimenta_con(M, A), As),
     (   As \= []
@@ -273,9 +271,9 @@ rasgo(M, participa_en_asaltos)  :- participa_en_asalto(M).
 rasgo(M, util_para_granja)      :- util_para_granja(M).
 rasgo(M, amenaza_nocturna)      :- amenaza_nocturna(M).
 
-% =====================================================================
+
 % 4. PREGUNTAS EN LENGUAJE NATURAL
-% =====================================================================
+
 % intencion(+Palabras, -Intencion): primera intencion cuyas palabras clave
 % aparezcan en la frase (el orden de las clausulas es la prioridad).
 intencion(Ws, I) :- clave(I, Claves), member(W, Ws), memberchk(W, Claves), !.
@@ -368,9 +366,9 @@ no_entendi :-
                     '¿Qué mobs hostiles se queman con el sol?']),
         format("     ~w~n", [E])).
 
-% =====================================================================
+
 % 5. MENU PRINCIPAL
-% =====================================================================
+
 iniciar_chatbot :-
     % Tildes y ñ correctas en entrada y salida
     catch(set_stream(user_input,  encoding(utf8)), _, true),
