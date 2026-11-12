@@ -111,10 +111,7 @@ alimenta_con(oveja,     trigo).
 alimenta_con(cabra,     trigo).
 alimenta_con(pollo,     semillas).
 alimenta_con(cerdo,     zanahoria).
-alimenta_con(cerdo,     papa).
-alimenta_con(cerdo,     remolacha).
 alimenta_con(conejo,    zanahoria).
-alimenta_con(conejo,    diente_de_leon).
 alimenta_con(caballo,   manzana_dorada).
 alimenta_con(caballo,   zanahoria_dorada).
 alimenta_con(burro,     manzana_dorada).
