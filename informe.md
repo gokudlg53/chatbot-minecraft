@@ -95,24 +95,22 @@ pregunta se ejecutó en ambas implementaciones:
    diseño con contexto).
 4. El motor de respaldo local permitió desarrollar y evaluar toda la solución
    sin depender de credenciales ni red, y degrada con mensaje claro cuando un
-   motor no está disponible (p. ej., sin `swipl` en el servidor).
+   motor no está disponible .
 
 ## 7. Propuestas de mejora
-1. **Stemming en el NLU:** reducir palabras a su raíz (protegerme → protege)
+1. **Stemming en el NLU:** reducir palabras a su raíz 
    para que preguntas como la 13 se resuelvan como consulta de protección en
    ambas versiones.
 2. **Embeddings + búsqueda semántica** en la versión LLM para seleccionar los
    hechos relevantes en lugar de la extracción por entidades nombradas,
    permitiendo escalas de KB mayores.
-3. **Clasificador de intenciones entrenado** (p. ej. fine-tuning ligero o
-   few-shot con ejemplos etiquetados) para reducir la fragilidad de las
+3. **Clasificador de intenciones entrenado** para reducir la fragilidad de las
    listas de palabras clave.
-4. **Tests automatizados** (unitarios en Python; suite de consultas en Prolog)
+4. **Tests automatizados** 
    y CI en el repositorio para validar que cambios en la KB no rompan
    respuestas previas.
-5. **Soporte de corrección ortográfica** (p. ej. distancia de Levenshtein en
-   el reconocimiento de entidades) en ambas versiones.
+5. **Soporte de corrección ortográfica** en ambas versiones.
 6. **Memoria de conversación** en la versión LLM para resolver referencias
-   («¿y qué suelta él?») y preguntas de seguimiento.
+   y preguntas de seguimiento.
 7. **Dockerfile** que incluya SWI-Prolog para desplegar la versión Prolog en
    cualquier servidor sin instalación manual.
